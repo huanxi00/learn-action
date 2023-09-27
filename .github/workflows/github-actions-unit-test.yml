@@ -14,9 +14,13 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-      - name: Run Unit Test Successfully
+      - name: Run Unit Test Should Pass
         run: |
-          echo "Unit Test"
           cd ${{ github.workspace }}/src/TestingDemo/DemoLibrary.Tests
-          ls
+          echo current directory is $PWD
+          dotnet test
+      - name: Run Unit Test Should Fail
+        run: |
+          cd ${{ github.workspace }}/src/TestingDemo/DemoLibrary.Tests
+          echo current directory is $PWD
           dotnet test
