@@ -21,6 +21,6 @@ jobs:
           dotnet test
       - name: Run Unit Test Should Fail
         run: |
-          cd ${{ github.workspace }}/src/TestingDemo/DemoLibrary.Tests
+          cd ${{ github.workspace }}/src/PrimeService/PrimeService.Tests
           echo current directory is $PWD
           dotnet test
