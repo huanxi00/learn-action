@@ -1,5 +1,5 @@
-name: GitHub Action Unit Test
-run-name: Run Unit Test on Branch ${{ github.ref }}
+name: GitHub Action Unit Test Should Fail
+run-name: ${{ github.actor }} Run Unit Test on Branch ${{ github.ref }}
 on: [push]
 jobs:
   unit-test:
@@ -14,12 +14,7 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-      - name: Run Unit Test Should Pass
-        run: |
-          cd ${{ github.workspace }}/src/TestingDemo/DemoLibrary.Tests
-          echo current directory is $PWD
-          dotnet test
-      - name: Run Unit Test Should Fail
+      - name: Run Unit Test
         run: |
           cd ${{ github.workspace }}/src/PrimeService/PrimeService.Tests
           echo current directory is $PWD
