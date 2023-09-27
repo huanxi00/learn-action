@@ -17,5 +17,6 @@ jobs:
       - name: Run Unit Test Successfully
         run: |
           echo "Unit Test"
-      - run: cd ${{ github.workspace }}/src/TestingDemo/DemoLibrary.Tests
-      - run: dotnet test
+          cd ${{ github.workspace }}/src/TestingDemo/DemoLibrary.Tests
+          ls
+          dotnet test
