@@ -1,0 +1,24 @@
+name: GitHub Action DynamoDB Test
+run-name: ${{ github.actor }} Run Unit Test on Branch ${{ github.ref }}
+on: [push]
+jobs:
+  Selenium-Test-Ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+      # - name: Start LocalStack
+      #   uses: LocalStack/setup-localstack@v0.1.2
+      #   env:
+      #     LOCALSTACK_API_KEY: ${{ secrets.LOCALSTACK_API_KEY }}
+      - name: Setup DynamoDB Local
+        uses: rrainn/dynamodb-action@v3.0.0
+        with:
+          port: 8000
+          cors: "*"
+      - name: Install dependencies
+        run: |
+          cd ${{ github.workspace }}/src/DynamoDBTest
+          pip install -r requirements.txt
+      - name: Run DynamoDB Test
+        run: |
+          cd ${{ github.workspace }}/src/DynamoDBTest
+          python Program.py
