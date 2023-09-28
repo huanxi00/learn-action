@@ -1,9 +1,15 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
 
 
 def test_eight_components():
-    driver = webdriver.Chrome()
+    # Configure ChromeOptions to run in headless mode
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--disable-gpu")
+
+    driver = webdriver.Chrome(options=chrome_options)
 
     driver.get("https://www.selenium.dev/selenium/web/web-form.html")
 
