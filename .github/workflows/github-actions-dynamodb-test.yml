@@ -14,10 +14,11 @@ jobs:
         with:
           port: 8000
           cors: "*"
+      - name: Check out repository code
+        uses: actions/checkout@v4
       - name: Install dependencies
         run: |
           echo current directory is $PWD
-          echo ${{ github.workspace }}}
           cd ${{ github.workspace }}/src/DynamoDBTest
           pip install -r requirements.txt
       - name: Run DynamoDB Test
