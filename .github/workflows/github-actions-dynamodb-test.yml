@@ -2,7 +2,7 @@ name: GitHub Action DynamoDB Test
 run-name: ${{ github.actor }} Run Unit Test on Branch ${{ github.ref }}
 on: [push]
 jobs:
-  Selenium-Test-Ubuntu:
+  DynamoDB-Test-Ubuntu:
     runs-on: ubuntu-latest
     steps:
       # - name: Start LocalStack
@@ -16,6 +16,7 @@ jobs:
           cors: "*"
       - name: Install dependencies
         run: |
+          echo current directory is $PWD
           cd ${{ github.workspace }}/src/DynamoDBTest
           pip install -r requirements.txt
       - name: Run DynamoDB Test
