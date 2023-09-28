@@ -1,0 +1,34 @@
+name: GitHub Action Unit Test
+run-name: ${{ github.actor }} Run Unit Test on Branch ${{ github.ref }}
+on: [push]
+jobs:
+  unit-test-should-fail:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 7.0
+      - name: Run Unit Test Should Fail
+        run: |
+          cd ${{ github.workspace }}/src/PrimeService/PrimeService.Tests
+          echo current directory is $PWD
+          dotnet test
+
+  unit-test-should-not-run:
+    runs-on: ubuntu-latest
+    needs: unit-test-should-fail
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 7.0
+      - name: Run Unit Test Should Not Run
+        run: |
+          cd ${{ github.workspace }}/src/TestingDemo/DemoLibrary.Tests
+          echo current directory is $PWD
+          dotnet test
