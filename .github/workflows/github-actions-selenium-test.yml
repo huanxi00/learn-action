@@ -7,12 +7,18 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
-      - name: Setup .NET
+      - name: Setup Python
         uses: actions/setup-python@v4
         with:
           python-version: 3.9
+      - name: Setup Google Chrome
+        uses: browser-actions/setup-chrome@v1
+      - name: Check Google Chrome version
+        run: chrome --version
       - name: Install dependencies
         run: |
           cd ${{ github.workspace }}/src/SeleniumTest
           pip install -r requirements.txt
+      - name: Run Selenium Test
+        run: |
           python Program.py
