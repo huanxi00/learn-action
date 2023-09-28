@@ -2,8 +2,26 @@ name: GitHub Action Unit Test Should Pass
 run-name: ${{ github.actor }} Run Unit Test on Branch ${{ github.ref }}
 on: [push]
 jobs:
-  unit-test:
+  unit-test-Ubuntu:
     runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 7.0
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+      - name: Run Unit Test
+        run: |
+          cd ${{ github.workspace }}/src/TestingDemo/DemoLibrary.Tests
+          echo current directory is $PWD
+          dotnet test
+
+  unit-test-Windows:
+    runs-on: windows-latest
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
