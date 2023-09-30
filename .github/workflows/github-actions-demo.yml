@@ -1,6 +1,10 @@
 name: GitHub Actions Demo
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-on: [push]
+on: # can be simplified to [push] if you only want to run on push
+  push:
+    branches:
+      - "*"
+  workflow_dispatch: # allows you to run manually from the Actions tab
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
