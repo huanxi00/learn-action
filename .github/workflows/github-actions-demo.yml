@@ -20,3 +20,34 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+
+  Explore-GitHub-Actions-Contexts:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Show github Context
+        run: echo ${{ toJson(github) }}
+      - name: Show env Context
+        run: echo ${{ toJson(env) }}
+      - name: Show vars Context
+        run: echo ${{ toJson(vars) }}
+      - name: Show job Context
+        run: echo ${{ toJson(job) }}
+      # - name: Show jobs Context
+      #   run: echo ${{ toJson(jobs) }}
+      - name: Show steps Context
+        run: echo ${{ toJson(steps) }}
+      - name: Show runner Context
+        run: echo ${{ toJson(runner) }}
+      - name: Show secrets Context
+        run: echo ${{ toJson(secrets) }}
+      - name: Show strategy Context
+        run: echo ${{ toJson(strategy) }}
+      - name: Show matrix Context
+        run: echo ${{ toJson(matrix) }}
+      - name: Show needs Context
+        run: echo ${{ toJson(needs) }}
+      - name: Show inputs Context
+        run: echo ${{ toJson(inputs) }}
