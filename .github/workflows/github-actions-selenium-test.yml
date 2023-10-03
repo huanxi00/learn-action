@@ -3,6 +3,9 @@ run-name: ${{ github.actor }} Run Unit Test on Branch ${{ github.ref }}
 on: [push, workflow_dispatch]
 jobs:
   Selenium-Test:
+    defaults:
+      run:
+        working-directory: ${{ github.workspace }}/src/SeleniumTest
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
@@ -20,9 +23,7 @@ jobs:
         run: chrome --version
       - name: Install dependencies
         run: |
-          cd ${{ github.workspace }}/src/SeleniumTest
           pip install -r requirements.txt
       - name: Run Selenium Test
         run: |
-          cd ${{ github.workspace }}/src/SeleniumTest
           python Program.py

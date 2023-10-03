@@ -3,6 +3,9 @@ run-name: ${{ github.actor }} Run Unit Test on Branch ${{ github.ref }}
 on: [push, workflow_dispatch]
 jobs:
   unit-test-should-pass:
+    defaults:
+      run:
+        working-directory: ${{ github.workspace }}/src/TestingDemo/DemoLibrary.Tests
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
@@ -19,12 +22,14 @@ jobs:
           ls ${{ github.workspace }}
       - name: Run Unit Test
         run: |
-          cd ${{ github.workspace }}/src/TestingDemo/DemoLibrary.Tests
           echo current directory is $PWD
           dotnet test
 
   unit-test-should-fail:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ github.workspace }}/src/PrimeService/PrimeService.Tests
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
@@ -34,12 +39,14 @@ jobs:
           dotnet-version: 7.0
       - name: Run Unit Test Should Fail
         run: |
-          cd ${{ github.workspace }}/src/PrimeService/PrimeService.Tests
           echo current directory is $PWD
           dotnet test
 
   unit-test-should-skip:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ github.workspace }}/src/TestingDemo/DemoLibrary.Tests
     needs: unit-test-should-fail
     steps:
       - name: Check out repository code
@@ -50,6 +57,5 @@ jobs:
           dotnet-version: 7.0
       - name: Run Unit Test Should Not Run
         run: |
-          cd ${{ github.workspace }}/src/TestingDemo/DemoLibrary.Tests
           echo current directory is $PWD
           dotnet test
