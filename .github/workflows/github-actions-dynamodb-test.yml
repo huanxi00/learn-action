@@ -3,6 +3,9 @@ run-name: ${{ github.actor }} Run Unit Test on Branch ${{ github.ref }}
 on: [push]
 jobs:
   DynamoDB-Test-Ubuntu:
+    defaults:
+      run:
+        working-directory: ${{ github.workspace }}/src/DynamoDBTest
     runs-on: ubuntu-latest
     steps:
       # - name: Start LocalStack
@@ -19,9 +22,7 @@ jobs:
       - name: Install dependencies
         run: |
           echo current directory is $PWD
-          cd ${{ github.workspace }}/src/DynamoDBTest
           pip install -r requirements.txt
       - name: Run DynamoDB Test
         run: |
-          cd ${{ github.workspace }}/src/DynamoDBTest
           python Program.py
