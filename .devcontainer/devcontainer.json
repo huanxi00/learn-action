@@ -1,0 +1,62 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/python
+{
+    "name": "Learn Action",
+    "image": "mcr.microsoft.com/devcontainers/python",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                // Microsoft
+                "ms-vscode.live-server",
+                "ms-vscode-remote.vscode-remote-extensionpack",
+                "ms-vscode.remote-explorer",
+                "ms-vscode.remote-repositories",
+                "ms-vscode.vs-keybindings",
+                "ms-vsliveshare.vsliveshare",
+                // IntelliSense
+                "visualstudioexptteam.intellicode-api-usage-examples",
+                "visualstudioexptteam.vscodeintellicode",
+                "visualstudioexptteam.vscodeintellicode-completions",
+                "visualstudioexptteam.vscodeintellicode-insiders",
+                // GitHub
+                "github.codespaces",
+                "github.copilot",
+                "github.copilot-chat",
+                "github.copilot-labs",
+                "github.github-vscode-theme",
+                "github.vscode-github-actions",
+                "github.vscode-pull-request-github",
+                "github.remotehub",
+                // Git
+                "donjayamanne.githistory",
+                // Formatting
+                "editorconfig.editorconfig",
+                "esbenp.prettier-vscode",
+                // Others
+                "streetsidesoftware.code-spell-checker",
+                "vscode-icons-team.vscode-icons"
+            ],
+            "settings": {
+                "diffEditor.renderSideBySide": false,
+                "editor.accessibilitySupport": "on",
+                "editor.formatOnPaste": true,
+                "editor.formatOnSave": true,
+                "editor.formatOnType": true,
+                "editor.inlineSuggest.enabled": true,
+                "editor.linkedEditing": true,
+                "editor.rulers": [
+                    120
+                ],
+                "editor.unicodeHighlight.nonBasicASCII": false,
+                "files.autoSave": "onFocusChange",
+                "files.insertFinalNewline": true,
+                "files.trimTrailingWhitespace": true,
+                "git.ignoreRebaseWarning": true,
+                "window.commandCenter": true,
+                "window.menuBarVisibility": "classic",
+                "workbench.sideBar.location": "right",
+                "workbench.colorTheme": "Default Light Modern"
+            }
+        }
+    }
+}

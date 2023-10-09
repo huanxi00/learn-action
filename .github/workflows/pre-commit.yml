@@ -1,0 +1,17 @@
+name: pre-commit
+run-name: ${{ github.actor }} is running pre commit on ${{ github.ref }}
+
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  pre-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source repository
+        uses: actions/checkout@v4
+      - name: Set up Python environment
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+      - name: pre-commit
+        uses: pre-commit/action@v3.0.0
