@@ -30,7 +30,6 @@ repos:
     rev: v2.2.2 # Possible releases: https://github.com/hadialqattan/pycln/releases
     hooks:
       - id: pycln
-        args: ["--max-line-length", "120"]
 
   - repo: https://github.com/pycqa/isort
     rev: 5.12.0
