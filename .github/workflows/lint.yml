@@ -5,6 +5,10 @@ on: [push, pull_request, workflow_dispatch]
 
 jobs:
   flake8-lint:
+    defaults:
+      run:
+        working-directory: ${{ github.workspace }}/src/LintTest/Python
+
     runs-on: ubuntu-latest
     name: Lint
     steps:
@@ -17,6 +21,5 @@ jobs:
       - name: flake8 Lint
         uses: py-actions/flake8@v2
         with:
-          path: "src/LintTest/Python"
           max-line-length: "80"
           update-pip: "true"
