@@ -36,7 +36,7 @@ def quick_sort(collection: list) -> list:
     for element in collection[:pivot_index]:
         (greater if element > pivot else lesser).append(element)
 
-    for element in collection[pivot_index + 1 :]:
+    for element in collection[pivot_index + 1:]:
         (greater if element > pivot else lesser).append(element)
 
     return [*quick_sort(lesser), pivot, *quick_sort(greater)]
