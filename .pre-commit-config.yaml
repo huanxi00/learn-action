@@ -16,6 +16,17 @@ repos:
       - id: check-json
       - id: check-merge-conflict
 
+  - repo: https://github.com/PyCQA/autoflake
+    rev: v2.2.1
+    hooks:
+      - id: autoflake
+        args:
+          - --in-place
+          - --remove-all-unused-imports
+          - --expand-star-imports
+          - --remove-duplicate-keys
+          - --remove-unused-variables
+
   # See https://black.readthedocs.io/en/stable/integrations/source_version_control.html for more information
   - repo: https://github.com/psf/black-pre-commit-mirror
     rev: 23.9.1
@@ -26,10 +37,10 @@ repos:
           - "--line-length=120"
 
   # See https://hadialqattan.github.io/pycln/#/?id=version-control-integration for more information
-  - repo: https://github.com/hadialqattan/pycln
-    rev: v2.2.2 # Possible releases: https://github.com/hadialqattan/pycln/releases
-    hooks:
-      - id: pycln
+  # - repo: https://github.com/hadialqattan/pycln
+  #   rev: v2.2.2 # Possible releases: https://github.com/hadialqattan/pycln/releases
+  #   hooks:
+  #     - id: pycln
 
   - repo: https://github.com/pycqa/isort
     rev: 5.12.0
